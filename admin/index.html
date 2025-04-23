@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+  <div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h2>Admin Dashboard</h2>
+      <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Google Form Embed -->
+    <div class="mb-5">
+      <h4>Add New Movie</h4>
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScV6MazaD1lMymJ00zkZfE5h4hTEVS57onsmyRV-nPmP14RSA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+    </div>
+
+    <!-- Table of Existing Movies -->
+    <div>
+      <h4>Recent Movies</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Poster</th>
+          </tr>
+        </thead>
+        <tbody id="movieTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.3/tabletop.min.js"></script>
+  <script>
+    if (localStorage.getItem("admin") !== "true") {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("admin");
+      window.location.href = "login.html";
+    }
+
+    Tabletop.init({
+      key: "1GThaLoNUn4dj0a-zSsTIoX97eFiAcUR9swu85n-X0uk", // Use the Google Sheet ID linked to your form
+      simpleSheet: true,
+      callback: function (data) {
+        const table = document.getElementById("movieTable");
+        data.slice(-10).reverse().forEach(movie => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${movie.Title}</td>
+            <td>${movie.Year}</td>
+            <td>${movie.Genre}</td>
+            <td><img src="${movie["Poster URL"]}" width="50"/></td>
+          `;
+          table.appendChild(row);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
