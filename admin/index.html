@@ -13,13 +13,33 @@
       <button class="btn btn-danger" onclick="logout()">Logout</button>
     </div>
 
-    <!-- Google Form Embed -->
     <div class="mb-5">
       <h4>Add New Movie</h4>
-      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScV6MazaD1lMymJ00zkZfE5h4hTEVS57onsmyRV-nPmP14RSA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <form id="uploadMovies">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="title" placeholder="Title" required />
+          <label for="title">Title<span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="year" placeholder="Year" required />
+          <label for="year">Year<span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="category" placeholder="Category" required />
+          <label for="category">Category<span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="posterurl" placeholder="Poster URL" required />
+          <label for="posterurl">Poster URL<span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="driveid" placeholder="Drive ID" required />
+          <label for="driveid">Drive ID<span class="text-danger">*</span></label>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Upload</button>
+      </form>
     </div>
 
-    <!-- Table of Existing Movies -->
     <div>
       <h4>Recent Movies</h4>
       <table class="table table-striped">
@@ -27,7 +47,7 @@
           <tr>
             <th>Title</th>
             <th>Year</th>
-            <th>Genre</th>
+            <th>Category</th>
             <th>Poster</th>
           </tr>
         </thead>
@@ -37,6 +57,7 @@
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.3/tabletop.min.js"></script>
+  <script src="script.js"></script>
   <script>
     if (localStorage.getItem("admin") !== "true") {
       window.location.href = "login.html";
@@ -48,7 +69,7 @@
     }
 
     Tabletop.init({
-      key: "1GThaLoNUn4dj0a-zSsTIoX97eFiAcUR9swu85n-X0uk", // Use the Google Sheet ID linked to your form
+      key: "1UqOC9xl-djtOZUo5iZ0TygV1Z1dTtLgKpDYWarkKyhg",
       simpleSheet: true,
       callback: function (data) {
         const table = document.getElementById("movieTable");
@@ -57,7 +78,7 @@
           row.innerHTML = `
             <td>${movie.Title}</td>
             <td>${movie.Year}</td>
-            <td>${movie.Genre}</td>
+            <td>${movie.Category}</td>
             <td><img src="${movie["Poster URL"]}" width="50"/></td>
           `;
           table.appendChild(row);
