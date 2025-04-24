@@ -1,8 +1,0 @@
-.modal-dialog {
-  max-width: 90%;
-}
-@media (max-width: 767px) {
-  .modal-dialog {
-    max-width: 100%;
-  }
-}
