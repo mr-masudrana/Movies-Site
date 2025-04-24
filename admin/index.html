@@ -29,12 +29,20 @@
           <label for="category">Category<span class="text-danger">*</span></label>
         </div>
         <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="language" placeholder="Language" required />
+          <label for="language">Language<span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating mb-3">
           <input type="text" class="form-control" id="posterurl" placeholder="Poster URL" required />
           <label for="posterurl">Poster URL<span class="text-danger">*</span></label>
         </div>
         <div class="form-floating mb-3">
           <input type="text" class="form-control" id="driveid" placeholder="Drive ID" required />
           <label for="driveid">Drive ID<span class="text-danger">*</span></label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="description" placeholder="Description" required />
+          <label for="description">Description<span class="text-danger">*</span></label>
         </div>
         <button type="submit" class="btn btn-primary w-100">Upload</button>
       </form>
@@ -69,7 +77,7 @@
     }
 
     Tabletop.init({
-      key: "1UqOC9xl-djtOZUo5iZ0TygV1Z1dTtLgKpDYWarkKyhg",
+      key: "2PACX-1vRqfbH89ZaOcHAOw_BdxpWEH442X85uMKK82Go-FHFCSwvinJBAkLcAWkiib3ENcxszCa5m_5gFzBe5",
       simpleSheet: true,
       callback: function (data) {
         const table = document.getElementById("movieTable");
