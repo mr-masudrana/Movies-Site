@@ -1,0 +1,55 @@
+/* Smooth Transition for Dark Mode */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #fff;
+}
+
+body.dark-mode .navbar-dark {
+  background-color: #333;
+}
+
+body.dark-mode .navbar-nav .nav-link {
+  color: #ddd;
+}
+
+body.dark-mode .navbar-nav .nav-link.active {
+  color: #fff;
+}
+
+/* Optional: Add smooth transitions for other elements */
+.navbar, .form-check-label, .load-more {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode .card {
+  background-color: #1e1e1e;
+  color: white;
+}
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+@media (max-width: 576px) {
+  .card-img-top {
+    height: 180px;
+  }
+}
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  z-index: 999;
+  padding: 10px 14px;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
