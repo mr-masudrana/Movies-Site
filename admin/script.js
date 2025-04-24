@@ -4,18 +4,22 @@ document.getElementById('uploadMovies').addEventListener('submit', function (e) 
   const title = document.getElementById('title').value.trim();
   const year = document.getElementById('year').value.trim();
   const category = document.getElementById('category').value.trim();
+  const language = document.getElementById('language').value.trim();
   const posterurl = document.getElementById('posterurl').value.trim();
   const driveid = document.getElementById('driveid').value.trim();
+  const description = document.getElementById('description').value.trim();
 
   const data = {
     title,
     year,
     category,
+    language,
     posterurl,
-    driveid
+    driveid,
+    description
   };
 
-  fetch('https://script.google.com/macros/s/AKfycbxPjYT60yT9iOskWpMod8nt7QuoTbWL3kT3VP4jajxz3honsTLg29Isaj9noif4L3yi/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbxVJi1AIdTfg_980GRnMQOJUE7xQu7lnJU2OyUxQrB6vD4_bEkMYDROSfqVylQDnRpD/exec', {
     method: 'POST',
     mode: 'no-cors',
     headers: {
